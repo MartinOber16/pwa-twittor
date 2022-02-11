@@ -1,5 +1,11 @@
+var url = window.location.href;
+var swLocation = '/pwa-twittor/sw.js'; // Produccion
+
 if( navigator.serviceWorker ) {
-    navigator.serviceWorker.register('/sw.js');
+    if( url.includes('localhost') ) {
+        swLocation = '/sw.js'; // Desarrollo local
+    }
+    navigator.serviceWorker.register( swLocation );
 }
 
 // Referencias de jQuery
